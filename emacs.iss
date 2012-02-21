@@ -16,7 +16,7 @@ OutputBaseFilename="emacs-23.4-setup"
 Compression=lzma
 SolidCompression=yes
 VersionInfoCompany=GNU
-VersionInfoVersion=23.4.0.1
+VersionInfoVersion=23.4.0.2
 VersionInfoDescription=GNU Emacs 23.4 setup
 
 [Languages]
@@ -39,6 +39,8 @@ Name: "{commondesktop}\GNU Emacs"; Filename: "{app}\bin\runemacs.exe"; WorkingDi
 [Registry]
 Root: HKCR; Subkey: "*\shell\emacs"; ValueType: string; ValueData: "Edit with emacs"; Flags: uninsdeletekey; Tasks: contextmenu
 Root: HKCR; Subkey: "*\shell\emacs\command"; ValueType: string; ValueData: """{app}\bin\emacsclientw.exe"" -n -a ""{app}\bin\runemacs.exe"" ""%1"""; Tasks: contextmenu
+Root: HKCR; Subkey: "Directory\shell\emacs"; ValueType: string; ValueData: "Edit with emacs"; Flags: uninsdeletekey; Tasks: contextmenu
+Root: HKCR; Subkey: "Directory\shell\emacs\command"; ValueType: string; ValueData: """{app}\bin\emacsclientw.exe"" -n -a ""{app}\bin\runemacs.exe"" ""%1"""; Tasks: contextmenu
 
 [Run]
 Filename: "{app}\bin\runemacs.exe"; Description: "{cm:LaunchProgram,Emacs}"; Flags: nowait postinstall skipifsilent
