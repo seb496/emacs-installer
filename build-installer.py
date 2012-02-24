@@ -6,6 +6,7 @@ VERSION='23.4'
 EMACS_FOLDER='emacs-%s' % (VERSION)
 GNU_ZIP='emacs-%s-bin-i386.zip' % (VERSION)
 GNU_URL='http://ftp.gnu.org/pub/gnu/emacs/windows/%s' % (GNU_ZIP)
+INNO_SETUP_REG_KEY="InnoSetupScriptFile\\shell\\Compile\\command"
 
 def download(force=False):
     if os.path.isfile(GNU_ZIP):
@@ -15,12 +16,10 @@ def download(force=False):
             return
     print('Downloading %s from gnu.org' % (GNU_ZIP))
     try:
-        import urllib.request
-        retriever = urllib.request
+        from urllib.request import urlretrieve
     except ImportError:
-        import urllib
-        retriever = urllib
-    retriever.urlretrieve(GNU_URL, GNU_ZIP)
+        from urllib import urlretrieve
+    urlretrieve(GNU_URL, GNU_ZIP)
 
 def unpack(force=False):
     if os.path.isdir(EMACS_FOLDER):
@@ -35,15 +34,23 @@ def unpack(force=False):
     zipf = zipfile.ZipFile(GNU_ZIP)
     zipf.extractall()
 
-def build(inno_compiler):
+def build():
     import subprocess
+    import shlex
     try:
-        subprocess.call([inno_compiler, "emacs.iss"])
-        return 0
+        import winreg
     except:
-        print("Cannot find Inno Setup's ISCC.exe in the PATH.")
-        print("Fix the PATH, or use -c \"C:\\path\\to\\iscc.exe\".")
-        print("You can find Inno Setup at http://www.jrsoftware.org/")
+        import _winreg as winreg
+    
+    try:
+        with winreg.OpenKey(winreg.HKEY_CLASSES_ROOT,
+                            INNO_SETUP_REG_KEY) as key:
+            compil32 = shlex.split(winreg.QueryValue(key, None))[0]
+            inno_compiler = compil32.replace("Compil32.exe", "ISCC.exe")
+        return subprocess.call([inno_compiler, "emacs.iss"])
+    except:
+        print("Cannot find Inno Setup's ISCC.exe")
+        print("You can find it at http://www.jrsoftware.org/")
         return 1
 
 if __name__ == '__main__':
@@ -51,9 +58,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Build installer for emacs")
     parser.add_argument('-f', action='store_const', const=True, default=False,
                         help='Force download and unpack')
-    parser.add_argument('-c', metavar='inno_compiler', default='iscc.exe',
-                        help='Compiler to use (path to iscc.exe)')
     args = parser.parse_args()
     download(args.f)
     unpack(args.f)
-    exit(build(args.c))
+    exit(build())

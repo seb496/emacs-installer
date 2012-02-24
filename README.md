@@ -1,12 +1,13 @@
 emacs-installer
 ---------------
 
-This package provides an exe installer for GNU emacs on windows. The installer is powered by [Inno Setup](http://www.jrsoftware.org/isinfo.php).
+This small package provides an exe installer for GNU emacs on windows. The installer is powered by [Inno Setup](http://www.jrsoftware.org/isinfo.php).
 
 ### Features
-* GNU Emacs
+* GNU Emacs binary from [gnu.org](http://ftp.gnu.org/pub/gnu/emacs/windows/)
 * Start menu entries
 * Context menu entry "Edit with emacs"
+* bat-mode major mode for batch files, from [dosbat](http://sourceforge.net/projects/dosbat/)
 
 ### Building the installer
 * Install [Inno Setup](http://www.jrsoftware.org/isinfo.php)
