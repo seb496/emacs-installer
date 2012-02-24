@@ -16,7 +16,7 @@ OutputBaseFilename="emacs-23.4-setup"
 Compression=lzma
 SolidCompression=yes
 VersionInfoCompany=GNU
-VersionInfoVersion=23.4.0.2
+VersionInfoVersion=23.4.0.3
 VersionInfoDescription=GNU Emacs 23.4 setup
 
 [Languages]
@@ -28,7 +28,7 @@ Name: "contextmenu"; Description: "Add emacs to context menu"
 
 [Files]
 Source: "emacs-23.4\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: default.el; DestDir: "{app}\site-lisp"; Flags: ignoreversion; Tasks: contextmenu
+Source: "site-lisp\*"; DestDir: "{app}\site-lisp"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
