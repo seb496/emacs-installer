@@ -9,6 +9,9 @@ This small package provides an exe installer for GNU emacs on windows. The insta
 * Context menu entry "Edit with emacs"
 * bat-mode major mode for batch files, from [dosbat](http://sourceforge.net/projects/dosbat/)
 
-### Building the installer
+### Getting the installer
+The latest version is in the [Downloads](https://github.com/salborini/emacs-installer/downloads) section
+
+* ### Building the installer
 * Install [Inno Setup](http://www.jrsoftware.org/isinfo.php)
 * python build-installer.py
