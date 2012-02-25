@@ -12,6 +12,6 @@ This small package provides an exe installer for GNU emacs on windows. The insta
 ### Getting the installer
 The latest version is in the [Downloads](https://github.com/salborini/emacs-installer/downloads) section
 
-* ### Building the installer
+### Building the installer
 * Install [Inno Setup](http://www.jrsoftware.org/isinfo.php)
 * python build-installer.py
