@@ -7,7 +7,7 @@ This small package provides an exe installer for GNU emacs on windows. The insta
 * GNU Emacs binary from [gnu.org](http://ftp.gnu.org/pub/gnu/emacs/windows/)
 * Start menu entries
 * Context menu entry "Edit with emacs"
-* bat-mode major mode for batch files, from [dosbat](http://sourceforge.net/projects/dosbat/)
+* Major modes support in site-lisp: [dosbat](http://sourceforge.net/projects/dosbat/), [CMake](http://www.cmake.org/CMakeDocs/cmake-mode.el)
 
 ### Getting the installer
 The latest version is in the [Downloads](https://github.com/salborini/emacs-installer/downloads) section

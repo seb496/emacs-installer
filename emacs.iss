@@ -16,7 +16,7 @@ OutputBaseFilename="emacs-23.4-setup"
 Compression=lzma
 SolidCompression=yes
 VersionInfoCompany=GNU
-VersionInfoVersion=23.4.0.3
+VersionInfoVersion=23.4.0.4
 VersionInfoDescription=GNU Emacs 23.4 setup
 
 [Languages]

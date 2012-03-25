@@ -38,3 +38,10 @@ structures to be hightlighted.  It is on by default.
 
 " t nil)
 (add-to-list 'auto-mode-alist '("\\.\\(?:bat\\|com\\|cmd\\)$" . bat-mode))
+
+; CMake mode for CMake files
+(autoload 'cmake-mode "cmake-mode" "Major mode for editing CMake files" t nil)
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+		("\\.cmake\\'" . cmake-mode))
+	      auto-mode-alist))
